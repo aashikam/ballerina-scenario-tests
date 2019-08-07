@@ -93,6 +93,7 @@
                 <module>bbg/bbg-integration-patterns</module>
                 <module>connectors/soap</module>
                 <module>connectors/artemis</module>
+                <module>connectors/rabbitmq</module>
             </modules>
         </profile>
         <profile>
@@ -121,6 +122,12 @@
             <modules>
                 <module>scenarios-commons</module>
                 <module>connectors/artemis</module>
+            </modules>
+        </profile><profile>
+            <id>messaging-rabbitmq</id>
+            <modules>
+                <module>scenarios-commons</module>
+                <module>connectors/rabbitmq</module>
             </modules>
         </profile>
         <profile>
