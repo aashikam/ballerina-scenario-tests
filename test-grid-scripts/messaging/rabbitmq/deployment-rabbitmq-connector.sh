@@ -15,7 +15,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-echo "*********************************************"
 readonly deployment_rabbitmq_parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 readonly deployment_rabbitmq_grand_parent_path=$(dirname ${deployment_rabbitmq_parent_path})
 readonly deployment_rabbitmq_great_grand_parent_path=$(dirname ${deployment_rabbitmq_grand_parent_path})
@@ -24,7 +23,6 @@ readonly deployment_rabbitmq_great_grand_parent_path=$(dirname ${deployment_rabb
 . ${deployment_rabbitmq_great_grand_parent_path}/setup/setup_deployment_env.sh
 
 function setup_deployment() {
-    echo "*****************SETUP****************************"
     clone_repo_and_set_bal_path
     deploy_rabbitmq_broker
     replace_variables_in_bal_files
