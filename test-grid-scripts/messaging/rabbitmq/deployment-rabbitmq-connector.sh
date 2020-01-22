@@ -48,8 +48,8 @@ function clone_repo_and_set_bal_path() {
 function deploy_rabbitmq_broker() {
     docker login --username=${docker_user} --password=${docker_password}
 
-    kubectl create -f connectors/rabbitmq/src/test/resources/rabbitmq-deployment.yaml --namespace=${cluster_namespace}
-    kubectl create -f connectors/rabbitmq/src/test/resources/rabbitmq-service.yaml --namespace=${cluster_namespace}
+    kubectl create -f /messaging/rabbitmq/src/test/resources/rabbitmq-deployment.yaml --namespace=${cluster_namespace}
+    kubectl create -f /messaging/rabbitmq/src/test/resources/rabbitmq-service.yaml --namespace=${cluster_namespace}
     wait_for_pod_readiness
     kubectl get svc --namespace=${cluster_namespace}
 }
@@ -76,10 +76,10 @@ function replace_variables_in_bal_file() {
 }
 
 function build_and_deploy_rabbitmq_resources() {
-    cd connectors/rabbitmq/src/test/resources/fanout
+    cd /messaging/rabbitmq/src/test/resources/fanout
     ${ballerina_home}/bin/ballerina build fanout
     cd ../../../../../..
-    kubectl apply -f ${work_dir}/connectors/rabbitmq/src/test/resources/fanout/target/kubernetes/fanout --namespace=${cluster_namespace}
+    kubectl apply -f ${work_dir}/messaging/rabbitmq/src/test/resources/fanout/target/kubernetes/fanout --namespace=${cluster_namespace}
     cd connectors/rabbitmq/src/test/resources/publisher-subscriber
     ${ballerina_home}/bin/ballerina build publisher-subscriber
     cd ../../../../../..
